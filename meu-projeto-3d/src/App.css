@@ -268,3 +268,31 @@
   color: #ff007f; /* Destaque rosa na linguagem ativa */
   background: none; /* Garante que não haverá fundo sólido */
 }
+/* Estilização do Loader 3D */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: #ff007f; /* Cor rosa correspondente ao seu tema */
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
