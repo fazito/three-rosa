@@ -40,15 +40,6 @@
   pointer-events: auto; /* Devolve cliques para os elementos do menu */
 }
 
-/* Configuração do Logo */
-.nav-logo img {
-  height: 40px; /* Ajuste a altura do seu logo aqui */
-  display: block;
-  transition: transform 0.2s;
-}
-.nav-logo img:hover {
-  transform: scale(1.05);
-}
 
 /* Links em Desktop */
 .nav-links {
@@ -244,4 +235,36 @@
 .dropdown-menu::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
+}
+/* Cria o alinhamento em coluna para o grupo da esquerda */
+.nav-brand-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha o texto e os botões à esquerda */
+  gap: 4px; /* Espaçamento sutil entre o nome e os botões de idioma */
+}
+
+/* Ajuste do Seletor de Idiomas para ficar perfeitamente encaixado abaixo */
+.lang-switcher {
+  display: flex;
+  gap: 8px;
+  pointer-events: auto;
+  margin-left: 0; /* Remove a margem esquerda anterior */
+}
+
+.lang-switcher button {
+  background: none;
+  border: none; /* Remove a borda para ficar mais limpo e discreto */
+  color: rgba(255, 255, 255, 0.5);
+  padding: 2px 4px;
+  cursor: pointer;
+  font-size: 11px; /* Letras ligeiramente menores para não competir com o logotipo */
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.lang-switcher button:hover, 
+.lang-switcher button.active {
+  color: #ff007f; /* Destaque rosa na linguagem ativa */
+  background: none; /* Garante que não haverá fundo sólido */
 }
