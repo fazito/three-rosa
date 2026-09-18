@@ -1,0 +1,26 @@
+{
+  "menu": {
+    "exhibitions": "Exposições",
+    "bio": "Bio",
+    "texts": "Textos",
+    "contact": "Contato",
+    "works": {
+      "main": "Trabalhos",
+      "item1": "Trabalho 1",
+      "item2": "Trabalho 2",
+      "item3": "Trabalho 3",
+      "item4": "Trabalho 4",
+      "item5": "Trabalho 5",
+      "item6": "Trabalho 6",
+      "item7": "Trabalho 7",
+      "item8": "Trabalho 8",
+      "item9": "Trabalho 9",
+      "item10": "Trabalho 10"
+    }
+  },
+  "hero": {
+    "title": "Bem-vindo à Minha Home 3D",
+    "subtitle": "O modelo do Blender rotaciona ao fundo enquanto você navega.",
+    "cta": "Começar Agora"
+  }
+}

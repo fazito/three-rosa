@@ -1,0 +1,26 @@
+{
+  "menu": {
+    "exhibitions": "Exhibitions",
+    "bio": "Bio",
+    "texts": "Texts",
+    "contact": "Contact",
+    "works": {
+      "main": "Works",
+      "item1": "Work 1",
+      "item2": "Work 2",
+      "item3": "Work 3",
+      "item4": "Work 4",
+      "item5": "Work 5",
+      "item6": "Work 6",
+      "item7": "Work 7",
+      "item8": "Work 8",
+      "item9": "Work 9",
+      "item10": "Work 10"
+    }
+  },
+  "hero": {
+    "title": "Welcome to My 3D Home",
+    "subtitle": "The Blender model rotates in the background while you browse.",
+    "cta": "Get Started"
+  }
+}

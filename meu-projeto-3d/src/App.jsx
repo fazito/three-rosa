@@ -1,18 +1,45 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stage } from '@react-three/drei'
-import { Model } from './Modelo' // O componente que o gltfjsx gerou para você
+import { useTranslation } from 'react-i18next' 
+import { Model } from './Modelo' // O componente que o gltfjsx gerou 
+import { Navbar } from './Navbar'
 
 function App() {
+    const { t } = useTranslation() 
   return (
-    <Canvas camera={{ position:[30, 0, 0], fov: 50 }}>
-      {/* O Stage configura automaticamente uma iluminação profissional e centraliza seu modelo */}
-      <Stage environment="city" intensity={0.6}>
-        <Model />
-      </Stage>
+    <div className="app-container">
+      
+      {/* 1. O CANVAS COMO PLANO DE FUNDO */}
+      <div className="canvas-background">
+        <Canvas camera={{ position:[30, 0, 0], fov: 50 }}>
+          <Stage environment="city" intensity={0.6}>
+            
+              <Model />
+           
+          </Stage>
+          {/* enableZoom={false} impede que o usuário dê zoom no fundo sem querer ao rolar a página */}
+          <OrbitControls makeDefault enableDamping enableZoom={true} minDistance={1}
+  maxDistance={10} />
+        </Canvas>
+      </div>
 
-      {/* Permite que você rotacione e dê zoom no modelo com o mouse */}
-      <OrbitControls makeDefault enableDamping />
-    </Canvas>
+      {/* INTERFACE DO USUÁRIO */}
+      <div className="content-overlay">
+         <Navbar />
+       
+
+        {/* CONTEÚDO CENTRAL DA HOME PAGE */}
+        <div className="hero-center">
+          <h1>{t('hero.title')}</h1>
+          <p>{t('hero.subtitle')}</p>
+          <button className="cta-button" onClick={() => alert('Explorando...')}>
+            {t('hero.cta')}
+          </button>
+        </div>
+
+      </div>
+
+    </div>
   )
 }
 

@@ -1,0 +1,26 @@
+{
+  "menu": {
+    "exhibitions": "Expositions",
+    "bio": "Bio",
+    "texts": "Textes",
+    "contact": "Contact",
+    "works": {
+      "main": "Projets",
+      "item1": "Projet 1",
+      "item2": "Projet 2",
+      "item3": "Projet 3",
+      "item4": "Projet 4",
+      "item5": "Projet 5",
+      "item6": "Projet 6",
+      "item7": "Projet 7",
+      "item8": "Projet 8",
+      "item9": "Projet 9",
+      "item10": "Projet 10"
+    }
+  },
+  "hero": {
+    "title": "Bienvenue sur ma Home 3D",
+    "subtitle": "Le modèle Blender tourne en arrière-plan pendant que vous naviguez.",
+    "cta": "Commencer"
+  }
+}

@@ -1,8 +1,247 @@
-#root, body, html {
+/* Layout Base Global */
+#root, body, html, .app-container {
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 100vh!important;
+  height: 100vh;
   overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fundo 3D preso atrás */
+.canvas-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Camada da interface na frente */
+.content-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none; /* Deixa o mouse passar para controlar o 3D */
+}
+
+/* --- BARRA DE NAVEGAÇÃO (NAVBAR) --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.4); /* Fundo escuro sutil para dar leitura */
+  backdrop-filter: blur(10px); /* Efeito de vidro jateado moderno */
+  pointer-events: auto; /* Devolve cliques para os elementos do menu */
+}
+
+/* Configuração do Logo */
+.nav-logo img {
+  height: 40px; /* Ajuste a altura do seu logo aqui */
+  display: block;
+  transition: transform 0.2s;
+}
+.nav-logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Links em Desktop */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #ff007f; /* Destaque rosa no hover */
+}
+
+/* Botão de Destaque (Último item da direita) */
+.nav-btn-destaque {
+  background-color: #ff007f;
+  padding: 8px 20px;
+  border-radius: 20px;
+  transition: background-color 0.2s !important;
+}
+
+.nav-btn-destaque:hover {
+  background-color: #cc0066;
+  color: white !important;
+}
+
+/* Botão do Hambúrguer (Escondido no Desktop) */
+.menu-burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* --- CONTEÚDO CENTRAL --- */
+.hero-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.cta-button {
+  pointer-events: auto;
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
   background-color: #ffffff;
+  color: #111111;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.cta-button:hover {
+  background-color: #ff007f;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* --- RESPONSIVIDADE (MOBILE-FIRST PARA O BURGER MENU) --- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .menu-burger-btn {
+    display: block; /* Mostra o botão de hambúrguer */
+  }
+
+  /* Transforma a lista de links em um painel que desce ocupando a tela */
+  .nav-links {
+    display: none; /* Escondido por padrão no mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 70px; /* Altura logo abaixo da navbar */
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    padding: 30px 0;
+    gap: 25px;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.5);
+  }
+
+  /* Classe ativada via estado do React quando clicado */
+  .nav-links.mobile-aberto {
+    display: flex;
+  }
+}
+/* Estilo do Logo em Texto Bold */
+.nav-logo-text {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 800; /* Super Bold */
+  letter-spacing: 1px;
+  transition: opacity 0.2s;
+}
+
+.nav-logo-text:hover {
+  opacity: 0.8;
+}
+
+/* Estrutura do Dropdown */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+
+.dropdown-trigger-btn:hover {
+  color: #ff007f;
+}
+
+.arrow-icon {
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+
+/* Lista de Subitens (Oculta por padrão) */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(10px);
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+  border-radius: 6px;
+  padding: 10px 0;
+  margin-top: 10px;
+  z-index: 10;
+  max-height: 300px; /* Limita a altura caso 10 itens fiquem muito compridos */
+  overflow-y: auto; /* Adiciona scroll interno macio se necessário */
+}
+
+/* Mostra o Dropdown quando a classe active/show é disparada */
+.dropdown-menu.show {
+  display: block;
+}
+
+/* Itens individuais dentro do Dropdown */
+.dropdown-menu a {
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  text-align: left;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(255, 0, 127, 0.15);
+  color: #ff007f;
+}
+
+/* Estilização da barra de rolagem interna do dropdown */
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
 }
