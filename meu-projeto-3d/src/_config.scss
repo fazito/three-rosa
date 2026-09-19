@@ -1,0 +1,43 @@
+// 1. IMPORTAÇÃO DOS MÓDULOS NATIVOS DO SASS (Obrigatório para a nova sintaxe)
+@use "sass:map";
+
+// 2. Variáveis de Cores
+$color-pink: #ff007f;
+$color-pink-hover: #cc0066;
+$color-white: #ffffff;
+$color-text-muted: rgba(255, 255, 255, 0.7);
+
+// 3. Variáveis de Tipografia
+$font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+// Map de Pesos
+$font-weights: (
+  "light": 300,
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+  "black": 800
+);
+
+// Map de Tamanhos Responsivos
+$font-sizes: (
+  "display": (desktop: 48px, mobile: 32px),
+  "h1":      (desktop: 36px, mobile: 26px),
+  "h2":      (desktop: 28px, mobile: 22px),
+  "body":    (desktop: 16px, mobile: 14px)
+);
+
+// 4. Mixin Corrigido utilizando map.get()
+@mixin heading($level) {
+  font-family: $font-primary;
+  color: $color-white;
+  line-height: 1.2;
+  
+  // Nova sintaxe moderna do Dart Sass 3.0
+  $sizes: map.get($font-sizes, $level);
+  font-size: map.get($sizes, desktop);
+
+  @media (max-width: 768px) {
+    font-size: map.get($sizes, mobile);
+  }
+}
